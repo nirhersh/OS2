@@ -20,11 +20,13 @@ int main() {
 	assert(x == 5);
     cout << "set & get test: PASS" << endl;
 
+	heaviest_descendant_test();
+	cout << "heaviest descendant test: PASS" << endl;
+
 	sum_tests();
 	cout << "ancestor sum test: PASS" << endl;
 
-	heaviest_descendant_test();
-	cout << "heaviest descendant test: PASS" << endl;
+	
     return 0;
 }
 
