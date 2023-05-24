@@ -4,6 +4,7 @@
 #include <cassert>
 
 void sum_tests();
+void heaviest_descendant_test();
 
 using namespace std;
 
@@ -21,6 +22,9 @@ int main() {
 
 	sum_tests();
 	cout << "ancestor sum test: PASS" << endl;
+
+	heaviest_descendant_test();
+	cout << "heaviest descendant test: PASS" << endl;
     return 0;
 }
 
@@ -63,5 +67,44 @@ void sum_tests()
 		}
 	}
 	sleep(5);
+}
 
+void heaviest_descendant_test()
+{
+	set_weight(0);
+	int dec_hav = get_heaviest_descendant();
+	assert(dec_hav == -ECHILD);	
+	pid_t pid1 = fork();
+	if(pid1 == 0)
+	{
+		sleep(7); //after the assert of the 1 father 2 sons happpens
+		pid_t pid3 = fork();
+		if(pid3 == 0) // second row first child
+		{
+			assert(get_heaviest_descendant() == -ECHILD);
+			set_weight(10);
+		} else {
+			sleep(2);
+			assert(get_heaviest_descendant() == pid3);
+		}
+
+		while(1);
+	} else {
+		assert(get_heaviest_descendant() == pid1);
+		pid_t pid2 = fork();
+		if(pid2 == 0) //first row second child
+		{
+			set_weight(4);
+			while(1);
+		} else {
+			sleep(2);
+			assert(get_heaviest_descendant() == pid2);\
+			sleep(10); //it will take some time. 
+			int last_test_haha;
+			last_test_haha = get_heaviest_descendant();
+			assert(last_test_haha != pid1 && last_test_haha != pid2 && last_test_haha != -ECHILD);
+		}
+
+	}
+	
 }
