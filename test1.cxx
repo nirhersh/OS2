@@ -39,7 +39,9 @@ void sum_tests()
 	pid_t pid = fork();
 	if(pid == 0) // first row child
 	{
-		assert(get_ancestor_sum() == 6);
+		int anc_sum = get_ancestor_sum();
+		cout << "first row child " << anc_sum << endl;
+		assert(anc_sum == 6);
 		set_weight(5);
 		assert(get_ancestor_sum() == 8);
 		pid_t pid1 = fork();
@@ -47,9 +49,9 @@ void sum_tests()
 			assert(get_ancestor_sum() == 13);
 			set_weight(0);
 			assert(get_ancestor_sum() == 8);
-			exit(0);
+			while(1);
 		}
-		exit(0);
+		while(1);
 	} else { // daddy
 		assert(get_ancestor_sum() == 3);
 		pid_t pid2 = fork();
@@ -57,7 +59,7 @@ void sum_tests()
 			assert(get_ancestor_sum() == 6);
 			set_weight(10);
 			assert(get_ancestor_sum() == 13);
-			exit(0);
+			while(1);
 		}
 	}
 
