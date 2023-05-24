@@ -6,6 +6,17 @@
 void sum_tests();
 void heaviest_descendant_test();
 
+/*..................................... README .........................................*/
+/*
+to run this test you need to run the test
+if you think we are wrong pls be 100% sure before contacting us
+roei.bloch@yourMOM.ac.techion.il
+nice to meet you.
+have a good one lol.
+
+				composed by the half milion test composers - Nir & Roei
+*/
+
 using namespace std;
 
 int main() {
@@ -34,19 +45,16 @@ void sum_tests()
 {
 	set_weight(0);
 	int anc_sum = get_ancestor_sum();
-	cout <<"ancestor sum: " << anc_sum << endl;
 	assert(anc_sum == 0);
 	
 	set_weight(3);
 	anc_sum = get_ancestor_sum();
-	cout <<"ancestor sum: " << anc_sum << endl;
 	assert(anc_sum == 3);
 
 	pid_t pid = fork();
 	if(pid == 0) // first row child
 	{
 		int anc_sum = get_ancestor_sum();
-		cout << "first row child " << anc_sum << endl;
 		assert(anc_sum == 6);
 		set_weight(5);
 		assert(get_ancestor_sum() == 8);
@@ -75,8 +83,6 @@ void heaviest_descendant_test()
 {
 	set_weight(0);
 	int dec_hav = get_heaviest_descendant();
-	cout << "parent pid: " << getpid() << endl;
-	cout << "the very parent heaviest " << dec_hav << endl;
 	assert(dec_hav == -ECHILD);	
 	pid_t pid1 = fork();
 	if(pid1 == 0)
