@@ -47,7 +47,9 @@ void sum_tests()
 			assert(get_ancestor_sum() == 13);
 			set_weight(0);
 			assert(get_ancestor_sum() == 8);
+			exit(0);
 		}
+		exit(0);
 	} else { // daddy
 		assert(get_ancestor_sum() == 3);
 		pid_t pid2 = fork();
@@ -55,6 +57,7 @@ void sum_tests()
 			assert(get_ancestor_sum() == 6);
 			set_weight(10);
 			assert(get_ancestor_sum() == 13);
+			exit(0);
 		}
 	}
 
