@@ -62,5 +62,6 @@ void sum_tests()
 			while(1);
 		}
 	}
+	sleep(5);
 
 }
