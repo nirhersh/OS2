@@ -73,6 +73,7 @@ void heaviest_descendant_test()
 {
 	set_weight(0);
 	int dec_hav = get_heaviest_descendant();
+	cout << "parent pid: " << getpid() << endl;
 	cout << "the very parent heaviest " << dec_hav << endl;
 	assert(dec_hav == -ECHILD);	
 	pid_t pid1 = fork();
