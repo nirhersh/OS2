@@ -22,6 +22,7 @@ int main() {
 
 	// Test negative weight
 	x = set_weight(-10);
+	cout << x << endl;
 	assert(x == -1);
 	x = get_weight();
 	assert(x == 5);
